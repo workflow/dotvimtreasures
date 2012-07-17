@@ -1,3 +1,7 @@
+" Pathogen!
+call pathogen#infect()
+call pathogen#helptags()
+
 " Disable menu sourcing in GVIM - this must be set before turning any syntax hl on!
 set go-=M
 
