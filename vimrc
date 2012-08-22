@@ -151,9 +151,9 @@ set background=dark
 " Key Bindings...
 "
 
-" CTRL-i to increment, and CTRL-d to decrement number under cursor
-nnoremap <silent> <C-I> <C-A>
-nnoremap <silent> <C-D> <C-X>
+" CTRL-SHIFT-i to increment, and CTRL-SHIFT-d to decrement number under cursor
+" nnoremap <silent> <C-S-I> <C-A>
+nnoremap <silent> <C-S-D> <C-X>
 
 " Who needs Umlauts in normal mode? So we'll do tagging with ö and jumping back with Ö (:
 nnoremap ö <C-]>
@@ -222,6 +222,9 @@ nnoremap <silent> k :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Bring up tab selection menu with <F10>
 nnoremap <F10> :ls!<CR>:tabn<SPACE>
+
+" Number toggle with <F11>
+nnoremap <F11> :NumbersToggle<CR>
 
 " Save single file with... let's not reinvent the wheel (:
 nmap <C-S> :w<CR>
@@ -356,6 +359,23 @@ map! <M-9> ]
 map <M-0> }
 map! <M-0> }
 
+" *** Juanski's fu ***
+" Working sudo fu (:
+cnoremap w!! %!sudo tee > /dev/null %
+
+" Persistent undos!
+set undodir=~/.vimundo
+set undofile
+set undolevels=1000
+
+" Swap files nice and bundled
+set directory=~/.cache/vimtmp
+
+" Awwwesome clibboard (:
+set clipboard=unnamedplus
+
+" *** /Juanski's fu ***
+
 
 " Skeletons
 au! BufNewFile *.css :r ~/code/libs/css/rac_standard.css
@@ -380,3 +400,4 @@ au BufRead,BufNewFile *.vtl  setfiletype velocity
 
 " Snippets Settings
 let g:snippetsEmu_key = "<C-j>"
+
