@@ -384,17 +384,7 @@ set clipboard=unnamedplus
 "  n... :  where to save the viminfo files
 set viminfo='10,\"100,:20,%,n~/.vim/info
 
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
 
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
 
 " Skeletons
 au! BufNewFile *.css :r ~/code/libs/css/rac_standard.css
