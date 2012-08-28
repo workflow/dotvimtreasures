@@ -25,7 +25,7 @@ set dictionary-=~/.vim/php/php_funclist dictionary+=~/.vim/php/php_funclist
 set complete-=k complete+=k
 
 " PHP-Specific autoclose of parantheses et quotas! (Insert single ones with <crtl>V)
-inoremap  { <CR>{<CR>}<C-O>O
+" inoremap  { <CR>{<CR>}<C-O>O
 
 " Have text-only PHP Manual.
 "autocmd FileType php set keywordprg=~/.vim/php/php_man.sh
