@@ -11,7 +11,7 @@ set guioptions -=T
 set ghr=0
 
 " Autocopy visually selected text!
-set go+=a
+" set go+=a
 " Use console dialogs instead of popups, at least for simple stuff
 set go+=c
 " We don't want GUI tablines

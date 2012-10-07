@@ -420,3 +420,12 @@ au BufRead,BufNewFile *.vtl  setfiletype velocity
 " Snippets Settings
 let g:snippetsEmu_key = "<C-j>"
 
+" Vim wiki
+let wiki_1 = {}
+let wiki_1.path = '~/Ubuntu\ One/vimwiki/'
+
+" let wiki_2 = {}
+" let g:vimwiki_list = [wiki_1, wiki_2]
+
+let g:vimwiki_list = [wiki_1]
+let mapleader = ","
