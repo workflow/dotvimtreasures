@@ -429,3 +429,45 @@ let wiki_1.path = '~/Ubuntu\ One/vimwiki/'
 
 let g:vimwiki_list = [wiki_1]
 let mapleader = ","
+
+" HTML Umlaut functions
+function UmlautHtml2Char()
+    " remember cursor position:
+    let s:line = line(".")
+    let s:column = col(".")
+    " if more than 'report' substitutions have been done, vim 
+    " displays it.
+    let s:save_report = &report
+    set report=99999
+    %s/&auml;/ä/eIg
+    %s/&ouml;/ö/eIg
+    %s/&uuml;/ü/eIg
+    %s/&Auml;/Ä/eIg
+    %s/&Ouml;/Ö/eIg
+    %s/&Uuml;/Ü/eIg
+    %s/&szlig;/ß/eIg
+    let &report=s:save_report
+    unlet s:save_report
+    call cursor(s:line,s:column)
+    unlet s:line
+    unlet s:column
+endfunction
+
+function UmlautChar2Html()
+    let s:line = line(".")
+    let s:column = col(".")
+    let s:save_report = &report
+    set report=99999
+    %s/ä/\&auml;/eIg
+    %s/ö/\&ouml;/eIg
+    %s/ü/\&uuml;/eIg
+    %s/Ä/\&Auml;/eIg
+    %s/Ö/\&Ouml;/eIg
+    %s/Ü/\&Uuml;/eIg
+    %s/ß/\&szlig;/eIg
+    let &report=s:save_report
+    unlet s:save_report
+    call cursor(s:line,s:column)
+    unlet s:line
+    unlet s:column
+endfunction

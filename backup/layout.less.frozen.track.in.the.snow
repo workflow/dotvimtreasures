@@ -6,10 +6,12 @@ body {
 // The text selection tags
 ::selection {
     background: @tirolSemiTransparentLightGray;
+    color: #fff;
 }
 
 ::-moz-selection {
     background: @tirolSemiTransparentLightGray;
+    color: #fff;
 }
 
 // LINKS
@@ -90,11 +92,12 @@ a[href$=".pdf"] {
 }
 
 a.ext-link {
-    color: @tirolSemiTransparentLightGray;
+    
+    color: @grayDark;
     width: auto;
     height: 25px;
     padding-right: 20px;
-    border-bottom: 1px dotted @tirolSemiTransparentLightGray;
+    border-bottom: 1px solid @grayDark;
     background: url(../images/icons/ext-link.png) no-repeat top right @white;
 }
 
@@ -128,7 +131,11 @@ a {
 
 // ALERTS
 
-.alert {border-radius: 0;}
+.alert {
+    border-radius: 0;
+}
+
+
 
 // BUTTONS
 button {
@@ -183,8 +190,16 @@ section#header {
     padding: 35px 1px 15px 1px;
     .container-fixed();
     background: rgb(255, 255, 255);
-    background: rgba(255, 255, 255, 0.2);
-
+	/* for IE */
+	background:transparent;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF); 
+	/* for IE */
+	background: rgba(255, 255, 255, 0.2);
+    
+    border-left: 1px solid rgba(255,255,255,.1);
+    border-right: 1px solid rgba(255,255,255,.1);
+    box-shadow: 0 0 10px rgba(0,0,0,.05);
+    
     // =TRICKY= Styles are slightly different when we have no news section at the top
     &.no-news {
         padding-bottom: 0;
@@ -196,10 +211,16 @@ section#header {
         border-left: 1px solid @tirolGray;
     }
 
+    .alert{
+        margin-left: 14px;
+        margin-right: 14px;
+        color: @grayDark;
+    }
+
     a.logo {
         width: @wrapperWidth / 6 - 10px;
         height: 153px;
-        padding-left: 24px;
+        padding-left: 18px;
         float: left;
 
         img {
@@ -221,7 +242,11 @@ section#header {
 
     #news {
         background: rgb(255, 255, 255);
-        background: rgba(255, 255, 255, 0.8);
+		/* for IE */
+		background:transparent;
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF,endColorstr=#CCFFFFFF); 
+		/* for IE */
+		background: rgba(255, 255, 255, 0.8);
         margin: 0 16px;
         padding-top: 0;
         width: @wrapperWidth - 32px;
@@ -290,6 +315,10 @@ section#header {
                     }
                 }
             }
+            
+            section.media{
+                margin-top: -2px;
+            }
 
             p {padding: 10px 0 5px 5px;}
         }
@@ -314,7 +343,8 @@ a.icon {
 
 .media {
     float: right;
-
+    margin-top: -1px;
+    
     a.icon {
         color: @grayLight;
 
@@ -327,6 +357,10 @@ a.icon {
 
 #content-wrapper {
     background: rgb(255, 255, 255);
+	/* for IE */
+	background:transparent;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF); 
+	/* for IE */
     background: rgba(255, 255, 255, 0.2);
     border-top: 8px solid @tirolGray;
     border-right: 1px solid @tirolGray;
@@ -385,7 +419,7 @@ a.icon {
     }
 
     a {
-        color: @tirolLightGray;
+        .linkGray();
 
         &:focus, &:hover {
             background-color: @tirolVeryLightGray;
@@ -464,8 +498,7 @@ a.icon {
 
                 &:focus span,
                 &:hover span {
-                    color: @tirolHeaderRed;
-                    border-bottom-color: @tirolHeaderRed;
+                    background-color: @tirolVeryLightGray;
                 }
             }
         }
@@ -580,7 +613,12 @@ a.icon {
     table {
         width: 95%;
 
-        caption {color: @tirolHeaderRed;}
+        caption {
+            h2{
+                padding-left: 0 !important;
+            }
+            text-align: left;
+        }
         thead {background: @tirolLightGray;}
         tfoot {
             color: @white;
@@ -591,6 +629,7 @@ a.icon {
             th, td {
                 border: 1px solid @tirolGray;
                 padding: 5px 10px;
+                text-align: left;
             }
         }
 
@@ -626,7 +665,7 @@ a.icon {
 
 }
 
-footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service, #block-events, #block-maincontent, #topics-nav-block, #units-nav-block, #block-poll, #block-tagcloud {
+footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map, #block-service, #block-events, #block-maincontent, #topics-nav-block, #units-nav-block, #block-poll, #block-tagcloud {
     .box-layout();
 }
 
@@ -640,6 +679,7 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
 
         img {
             padding: 0 !important;
+			border: none;
         }
 
         p {
@@ -652,6 +692,14 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
             }
         }
     }
+}
+
+#block-map{
+    
+    a:hover, a:active{
+        background: none;
+    }
+    
 }
 
 #block-contact .tab-content {
@@ -920,6 +968,8 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
 
 // THE TAG CLOUD
 #block-tagcloud {
+	
+	header {border-bottom: none;}
 
     .inner {
         padding: 8px 20px 3px;
@@ -1031,7 +1081,9 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
     h2, h3 {
         padding: 3px 16px;
     } 
-
+    a{
+        color: @grayDark;
+    }
     a.download {
         color: @grayDarker;
         display: inline-block;
@@ -1058,7 +1110,12 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
     ol {
         padding-right: 16px;
     }
-
+    
+    .alert{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
     article.main-content {
         padding: 10px 16px;
         border: none;
@@ -1078,7 +1135,6 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
 
             figcaption {
                 font-size: 12px;
-                font-weight: 600;
                 color: @grayDark;
             }
         }
@@ -1086,6 +1142,7 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
         p {
             margin: 10px 0;
             padding: 0 0 16px;
+            line-height: 18px;
         }
     }
 
@@ -1120,12 +1177,23 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
 
     // The Forms redefined
     .form-horizontal{
+        padding: 0 20px;
         legend {padding-left: 16px; width: auto;}
+        label{
+            text-align: left;
+        }
+        input, textarea{
+            border-radius: 0;
+        }
+        textarea{
+            width: 400px;
+        }
     }
 
     // The BLOCKQUOTE
     blockquote {
         font-style: italic;
+        margin-left: 20px;
 
         p {
             font-size: 12px;
@@ -1142,6 +1210,10 @@ footer, #block-actions, #block-news, #block-webcams, #block-map, #block-service,
         ul li {
             border: none !important;
             padding: 0;
+            
+            a{
+                border-radius: 0;
+            }
         }
     }
 
