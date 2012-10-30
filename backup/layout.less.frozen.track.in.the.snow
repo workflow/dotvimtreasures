@@ -85,6 +85,11 @@ a.download {
     &:focus, &:hover, &>p:focus, &>p:hover {
         color: @tirolHeaderRed;
     }
+
+    span:hover{
+        background-color: @tirolHeaderRed;
+        color: @white;
+    }
 }
 
 a[href$=".pdf"] {
@@ -92,7 +97,7 @@ a[href$=".pdf"] {
 }
 
 a.ext-link {
-    
+
     color: @grayDark;
     width: auto;
     height: 25px;
@@ -123,10 +128,9 @@ a {
     &:hover {
 
         img { 
-            .box-shadow( 0 0 20px rgba(255,255,255,0.8) );
             .opacity(100);
         }
-    }   
+    }
 }
 
 // ALERTS
@@ -190,16 +194,16 @@ section#header {
     padding: 35px 1px 15px 1px;
     .container-fixed();
     background: rgb(255, 255, 255);
-	/* for IE */
-	background:transparent;
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF); 
-	/* for IE */
-	background: rgba(255, 255, 255, 0.2);
-    
+    /* for IE */
+    background:transparent;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')", #33FFFF, #33FFFF));
+    /* for IE */
+    background: rgba(255, 255, 255, 0.2);
+
     border-left: 1px solid rgba(255,255,255,.1);
     border-right: 1px solid rgba(255,255,255,.1);
     box-shadow: 0 0 10px rgba(0,0,0,.05);
-    
+
     // =TRICKY= Styles are slightly different when we have no news section at the top
     &.no-news {
         padding-bottom: 0;
@@ -212,9 +216,18 @@ section#header {
     }
 
     .alert{
-        margin-left: 14px;
+        margin-left: 193px;
         margin-right: 14px;
         color: @grayDark;
+        font-weight:bold;
+        height:16px;
+        margin-top: 22px;
+    }
+    .alert-error{
+        p{
+            position: relative;
+            top: -185px;
+        }
     }
 
     a.logo {
@@ -242,11 +255,11 @@ section#header {
 
     #news {
         background: rgb(255, 255, 255);
-		/* for IE */
-		background:transparent;
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#CCFFFFFF,endColorstr=#CCFFFFFF); 
-		/* for IE */
-		background: rgba(255, 255, 255, 0.8);
+        /* for IE */
+        background:transparent;
+        filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')", #CCFFFF, #CCFFFF));
+        /* for IE */
+        background: rgba(255, 255, 255, 0.8);
         margin: 0 16px;
         padding-top: 0;
         width: @wrapperWidth - 32px;
@@ -256,7 +269,7 @@ section#header {
         article.news-frontpage {
             float: left;
             width: 298px;
-            padding: 15px 9px 0 9px;
+            padding: 15px 10px 0 10px;
 
             img {
                 width: 298px;
@@ -315,12 +328,16 @@ section#header {
                     }
                 }
             }
-            
+
             section.media{
                 margin-top: -2px;
             }
 
-            p {padding: 10px 0 5px 5px;}
+            p {
+                padding: 10px 0 5px 5px;
+                font-size: 13px;
+                line-height: 1.4em;
+            }
         }
     }
 }
@@ -333,7 +350,7 @@ time {
 
 // The icon sets
 a.icon {
-    padding: 2px 0 0 1px;
+    padding: 0 0 0 1px;
     color: @grayLight;
 
     &:focus, &:hover {
@@ -344,7 +361,7 @@ a.icon {
 .media {
     float: right;
     margin-top: -1px;
-    
+
     a.icon {
         color: @grayLight;
 
@@ -357,16 +374,17 @@ a.icon {
 
 #content-wrapper {
     background: rgb(255, 255, 255);
-	/* for IE */
-	background:transparent;
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF); 
-	/* for IE */
+    /* for IE */
+    background:transparent;
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d')", #33FFFF, #33FFFF));
+    /* for IE */
     background: rgba(255, 255, 255, 0.2);
     border-top: 8px solid @tirolGray;
-    border-right: 1px solid @tirolGray;
-    border-left: 1px solid @tirolGray;
+    border-right: 1px solid rgba(255, 255, 255, 0.1)!important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1)!important;
     .container-fixed();
     width: @wrapperWidth;
+    padding: 0px 1px 0px 1px;
 
     // =TRICKY= Styles are slightly different when we have no news section at the top
     &.no-news {
@@ -384,7 +402,7 @@ a.icon {
 }
 
 .block {
-    padding-bottom: 5px;
+    // padding-bottom: 5px;
 
     header {
         padding-left: 16px;
@@ -419,11 +437,14 @@ a.icon {
     }
 
     a {
+
         .linkGray();
 
-        &:focus, &:hover {
+        span{ padding: 2px;}
+        span:focus, span:hover {
             background-color: @tirolVeryLightGray;
             color: @tirolHeaderRed;
+
         }
     }
 
@@ -451,7 +472,7 @@ a.icon {
 
             h3 {
                 line-height: 18px;
-                font-size: 12px;
+                font-size: 13px;
 
                 .linkGray();
             }
@@ -504,23 +525,31 @@ a.icon {
         }
     }
 
-    ul.squared li {
-        background: none;
-        padding: 4px 0 4px 16px;
-        margin-top: 2px;
-        list-style: square inside;
-        border-bottom: none;
-
-        span {
-            font-weight: 600;
-        }
-    }
-
     ul.inputs-list li {
         padding: 1px 0 1px 16px;
         margin-top: 2px;
         border: none;
     }
+
+    input:focus,textarea:focus,select:focus{
+
+        -webkit-box-shadow:0 0 6px @tirolHeaderRed;
+        -moz-box-shadow:0 0 5px @tirolHeaderRed;
+        box-shadow:0 0 5px @tirolHeaderRed;
+        outline: none!important;
+        border: 1px solid @tirolHeaderRed!important;
+    }
+
+    /* IE - BOX SHADOW FIX */
+    input:focus,textarea:focus,select:focus{
+        zoom: 1;
+        filter: progid:DXImageTransform.Microsoft.Shadow(Color=@tirolHeaderRed, Strength=3, Direction=0),
+        progid:DXImageTransform.Microsoft.Shadow(Color=@tirolHeaderRed, Strength=3, Direction=90),
+        progid:DXImageTransform.Microsoft.Shadow(Color=@tirolHeaderRed, Strength=3, Direction=180),
+        progid:DXImageTransform.Microsoft.Shadow(Color=@tirolHeaderRed, Strength=3, Direction=270);
+    }
+
+
 
     ul.arrowed {
 
@@ -545,7 +574,7 @@ a.icon {
 
             a.subless {
                 padding: 5px 0 0 38px;
-                background: url(../images/icons/topics-list-right.png) no-repeat 14px 9px @white;
+                background: url(../images/icons/topics-list-gray.png) no-repeat 14px 9px @white;
                 color: @grayDark;
                 font-weight: 600;
                 p {
@@ -599,7 +628,7 @@ a.icon {
                 line-height: 16px;
                 padding-bottom: 5px;
                 a {
-                    .heading2;
+                    // .heading2;
                 }
             }
         }
@@ -607,6 +636,8 @@ a.icon {
         p {
             margin: 0;
             padding: 0;
+            font-size: 13px;
+            line-height: 1.4em;
         }
     }
 
@@ -621,8 +652,8 @@ a.icon {
         }
         thead {background: @tirolLightGray;}
         tfoot {
-            color: @white;
-            background: @grayLighter;
+            
+            background: @tirolLightGray;
         }
 
         tr {
@@ -637,7 +668,7 @@ a.icon {
     }
 
     img {
-        padding: 9px 5px 3px 19px;
+        padding: 9px 5px 3px 17px;
     }
 
     p {
@@ -675,31 +706,37 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
     .tab-content {
         clear: both;
         .tabs();
-        padding: 10px 0 0 15px;
+        padding: 10px 0 0 10px;
 
         img {
             padding: 0 !important;
-			border: none;
+            border: none;
         }
 
         p {
             margin: 0;
             padding: 5px 0 10px;
+            color: @grayDark;
+            font-size: 13px;
+            line-height: 18px;
 
             &.more {
                 padding: 2px 22px 0 0;
                 clear: both;
             }
         }
+        span{
+            line-height: 20px;
+        }
     }
 }
 
 #block-map{
-    
+
     a:hover, a:active{
         background: none;
     }
-    
+
 }
 
 #block-contact .tab-content {
@@ -707,7 +744,7 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
     section {padding-bottom: 5px;}
 }
 
-#block-tabcard {
+#block-tabcard, #block-tabcard-press {
 
     .tab-content {
         padding: 10px 0 0 0;
@@ -724,19 +761,47 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
             padding-left: 4px;
         }
 
+        .search-query{
+            width:440px;
+            height:25px;
+            margin-left:15px;
+        }
+
+        .form-search{
+            padding-top:5px;
+
+            input{
+                border-radius: 0;
+            }
+
+        }
+
+        span{
+            margin-left: 4px;
+            text-decoration: underline;
+            color: #8e8f91;
+            font-style: italic;
+            font-size: 11px;
+            a{
+                color: #8e8f91;
+            }
+        }
+
+
+
         article {
             float: left;
             width: 175px;
             padding: 0 15px;
             margin-top: 4px;
-            border-right: 1px dotted @tirolGray;
+           /* border-right: 1px dotted @tirolGray; */
             border-bottom: none;
 
             header {
 
                 h3 {
                     border: none;
-                    font-size: 12px;
+                    font-size: 13px;
                     font-weight: 700;
                     line-height: 18px;
                     margin-top: 7px;
@@ -751,25 +816,41 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
     }
 }
 
+#archiv-tab{
+     article{
+        width:587px!important;
+        
+        padding-bottom: 5px!important;
+    }
+    h3{
+        margin-top: 0px!important;
+        border-bottom: 1px dotted grey!important;
+    }
+    .icon{
+        margin-top:10px!important;
+    }
+}
+
 .media {
     float: right;
-    img {padding: 0;}	
+    img {padding: 0;}
 }
 
 #block-contact .tab-content {
     clear: both;
-    min-width: 283px;
+    min-width: 288px;
 
-    span {
+    span.organization-name {
         font-weight: 700;
     }
 
     a {
         color: #8d8d8d;
         text-decoration: underline;
-
+        padding: 1px;
         &:focus, &:hover {
-            color: @black;
+            color: @white;
+            background-color: @tirolHeaderRed;
         }
     }
 }
@@ -801,6 +882,35 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
     h3 {line-height: 18px;}
 }
 
+
+.article-large article{
+    width: 278px!important;
+
+    img{
+        width: 278px;
+    }
+}
+
+.press-detail{
+    img{
+    width:278px!important;
+    }
+    h2{
+        margin-top: 20px;
+    }
+    figure{
+        width: 290px;
+        float:left;
+        margin: 0px 0px 15px 0px;
+    }
+    figcaption{
+        margin-left: 16px;
+    }
+}
+
+
+
+
 #block-family {
 
     .tab-content {
@@ -816,6 +926,12 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
         }
     }
 }
+#downright-tab {
+    img{
+        margin: 0px 10px 5px 0px;
+    }
+}
+
 
 #block-actions {
 
@@ -837,7 +953,8 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
         }
 
         p {
-            font-size: 12px;
+            font-size: 13px;
+            line-height: 1.3em;
         }
     }
 
@@ -960,7 +1077,7 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
                     margin-right: 19px;
                     margin-bottom: -1px;
                 }
-            }   
+            }
         }
     }
 
@@ -968,14 +1085,15 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
 
 // THE TAG CLOUD
 #block-tagcloud {
-	
-	header {border-bottom: none;}
+
+    header {border-bottom: none;}
+    background-color: @tirolHeaderRed;
 
     .inner {
         padding: 8px 20px 3px;
 
         a {
-            color: @gray;
+            color: @white;
             font-weight: bold;
         }
 
@@ -1076,11 +1194,12 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
 
     header {
         margin-bottom: 10px;
+        padding: 10px 10px 0px 15px;
     }
 
     h2, h3 {
         padding: 3px 16px;
-    } 
+    }
     a{
         color: @grayDark;
     }
@@ -1107,15 +1226,31 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
         }
     }
 
+    ul li {
+        background: none;
+        padding: 4px 0 4px 16px;
+        margin-top: 2px;
+        list-style: square inside;
+        border-bottom: none;
+        font-size: 13px;
+        line-height: 1.4em;
+
+        span {
+            font-weight: 600;
+        }
+    }
+
     ol {
         padding-right: 16px;
+        font-size: 13px;
+        line-height: 1.4em;
     }
-    
+
     .alert{
         margin-left: 20px;
         margin-right: 20px;
     }
-    
+
     article.main-content {
         padding: 10px 16px;
         border: none;
@@ -1140,13 +1275,17 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
         }
 
         p {
+
             margin: 10px 0;
             padding: 0 0 16px;
             line-height: 18px;
+            font-size: 13px;
         }
     }
 
-    p {padding-left: 16px;}
+    p {  padding-left: 16px;
+         font-size: 13px;
+     }
 
     section.gallery {
         h3 {padding-left: 6px;}
@@ -1210,7 +1349,7 @@ footer, #block-actions, #block-news, #block-top-news, #block-webcams, #block-map
         ul li {
             border: none !important;
             padding: 0;
-            
+
             a{
                 border-radius: 0;
             }
