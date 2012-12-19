@@ -13,7 +13,8 @@ let g:colors_name = 'chlordane'
 
 hi Cursor	guifg=#3a553a guibg=#77dd88
 hi lCursor	guifg=#3a553a guibg=#77dd88
-hi CursorLine	guibg=#000000 gui=underline
+hi CursorLine	guibg=#224422
+hi CursorColumn guibg=#224422
 hi CursorIM	guifg=#3a553a guibg=#77dd88
 hi Directory	guifg=#77dd88 guibg=#000000 gui=bold
 hi DiffAdd	guifg=#77dd88 guibg=#3a553a gui=none

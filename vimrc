@@ -374,6 +374,8 @@ set directory=~/.cache/vimtmp
 " Awwwesome clibboard (:
 set clipboard=unnamedplus
 
+" Awesome crosshair
+set cursorline cursorcolumn
 " *** /Juanski's fu ***
 
 " Tell vim to remember certain things when we exit

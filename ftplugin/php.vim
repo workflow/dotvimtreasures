@@ -13,9 +13,9 @@ set errorformat=%m\ in\ %f\ on\ line\ %l
 map <silent> <F7> :make %<CR>
 
 " PHPDOC! 
-inoremap <C-P> <ESC>:call PhpDocSingle()<CR>i
-nnoremap <C-P> :call PhpDocSingle()<CR>
-vnoremap <C-P> :call PhpDocRange()<CR> 
+inoremap <C-D> <ESC>:call PhpDocSingle()<CR>i
+nnoremap <C-D> :call PhpDocSingle()<CR>
+vnoremap <C-D> :call PhpDocRange()<CR> 
 
 " TagList
 let tlist_php_settings = 'php;c:class;d:constant;f:function'

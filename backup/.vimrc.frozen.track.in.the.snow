@@ -374,6 +374,9 @@ set directory=~/.cache/vimtmp
 " Awwwesome clibboard (:
 set clipboard=unnamedplus
 
+" Awesome crosshair
+set cursorline cursorcolumn
+highlight CursorColumn guibg=#404040
 " *** /Juanski's fu ***
 
 " Tell vim to remember certain things when we exit
@@ -431,7 +434,7 @@ let g:vimwiki_list = [wiki_1]
 let mapleader = ","
 
 " HTML Umlaut functions
-function s:UmlautHtml2Char()
+function UmlautHtml2Char()
     " remember cursor position:
     let s:line = line(".")
     let s:column = col(".")
@@ -453,7 +456,7 @@ function s:UmlautHtml2Char()
     unlet s:column
 endfunction
 
-function s:UmlautChar2Html()
+function UmlautChar2Html()
     let s:line = line(".")
     let s:column = col(".")
     let s:save_report = &report
