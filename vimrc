@@ -2,6 +2,24 @@
 call pathogen#infect()
 call pathogen#helptags()
 
+" ### Vundle config ###
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'Valloric/YouCompleteMe'
+
+filetype plugin indent on
+" ### END Vundle config ###
+
 " Disable menu sourcing in GVIM - this must be set before turning any syntax hl on!
 set go-=M
 
@@ -433,7 +451,7 @@ let g:vimwiki_list = [wiki_1]
 let mapleader = ","
 
 " HTML Umlaut functions
-function UmlautHtml2Char()
+function! UmlautHtml2Char()
     " remember cursor position:
     let s:line = line(".")
     let s:column = col(".")
@@ -455,7 +473,7 @@ function UmlautHtml2Char()
     unlet s:column
 endfunction
 
-function UmlautChar2Html()
+function! UmlautChar2Html()
     let s:line = line(".")
     let s:column = col(".")
     let s:save_report = &report

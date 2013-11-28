@@ -5,7 +5,7 @@ call pathogen#helptags()
 " Disable menu sourcing in GVIM - this must be set before turning any syntax hl on!
 set go-=M
 
-syntax on
+syntax off
 
 " Enable Mouse
 set mouse=a
@@ -287,7 +287,7 @@ filetype indent on
 let g:netrw_use_errorwindow=0
 
 " Enable matchIt!
-source $VIMRUNTIME/macros/matchit.vim
+" source $VIMRUNTIME/macros/matchit.vim
 
 " Autoclose Parantheses ( et quotas ) ! (Insert single ones with <crtl>V)
 " inoremap [ []<left>
@@ -376,7 +376,6 @@ set clipboard=unnamedplus
 
 " Awesome crosshair
 set cursorline cursorcolumn
-highlight CursorColumn guibg=#404040
 " *** /Juanski's fu ***
 
 " Tell vim to remember certain things when we exit
