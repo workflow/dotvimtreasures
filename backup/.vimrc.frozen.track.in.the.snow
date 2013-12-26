@@ -172,12 +172,22 @@ function! SwapColorScheme()
         colorscheme chlordane
     endif
 endfunction
-nnoremap <silent> ,c :call SwapColorScheme()<CR>
+nnoremap <silent> <leader>c :call SwapColorScheme()<CR>
 
 "
 "
 " Key Bindings...
 "
+"
+
+" Bindings from Maximum Awesome
+nmap <leader>a :Ack<space>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>t :CtrlP<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nmap <leader>] :TagbarToggle<CR>
 
 " CTRL-SHIFT-i to increment, and CTRL-SHIFT-d to decrement number under cursor
 " nnoremap <silent> <C-S-I> <C-A>

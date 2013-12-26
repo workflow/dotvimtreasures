@@ -178,6 +178,16 @@ nnoremap <silent> <leader>c :call SwapColorScheme()<CR>
 "
 " Key Bindings...
 "
+"
+
+" Bindings from Maximum Awesome
+nmap <leader>a :Ack<space>
+nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
+nmap <leader>t :CtrlP<CR>
+nmap <leader>T :CtrlPClearCache<CR>:CtrlP<CR>
+nmap <leader>] :TagbarToggle<CR>
 
 " CTRL-SHIFT-i to increment, and CTRL-SHIFT-d to decrement number under cursor
 " nnoremap <silent> <C-S-I> <C-A>
@@ -446,6 +456,9 @@ au BufNewFile,BufRead *.phtml let b:match_words="<:>,<\@<=[ou]l\>[^>]*\%(>\|$\):
 
 " Velocity Settings
 au BufRead,BufNewFile *.vtl  setfiletype velocity
+
+" Markdown" md is markdown
+autocmd BufRead,BufNewFile *.md set filetype=markdown
 
 " Snippets Settings
 let g:snippetsEmu_key = "<C-j>"
