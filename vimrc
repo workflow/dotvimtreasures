@@ -164,6 +164,16 @@ set background=dark
 	" hi TabLineSel cterm=None ctermfg=DarkYellow
 " endif
 
+function! SwapColorScheme()
+    let s:cs = g:colors_name
+    if s:cs == "chlordane"
+        colorscheme ir_black
+    else
+        colorscheme chlordane
+    endif
+endfunction
+nnoremap <silent> <leader>c :call SwapColorScheme()<CR>
+
 "
 "
 " Key Bindings...

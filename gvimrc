@@ -28,9 +28,9 @@ set background=dark
 colorscheme chlordane
 " let hr = strftime('%H')
 " if hr >= 6 && hr <= 18 
-	" colorscheme Black
+        " colorscheme solarized
 " else
-	" colorscheme chlordane
+        " colorscheme chlordane
 " endif
 
 " And Fonts
